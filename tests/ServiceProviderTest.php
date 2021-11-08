@@ -4,13 +4,13 @@ namespace Tests;
 
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Overtrue\LaravelQcloudCaptcha\CaptchaManager;
-use Overtrue\LaravelQcloudCaptcha\QcloudCaptchaServiceProvider;
+use Overtrue\LaravelQcloudCaptcha\CaptchaServiceProvider;
 
 class ServiceProviderTest extends TestCase
 {
     public function test_services_are_registered()
     {
-        $this->assertInstanceOf(DeferrableProvider::class, new QcloudCaptchaServiceProvider($this->app));
+        $this->assertInstanceOf(DeferrableProvider::class, new CaptchaServiceProvider($this->app));
 
         \config(
             [

@@ -33,11 +33,8 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Overtrue\\LaravelQcloudCaptcha\\QcloudCaptchaServiceProvider"
-      ],
-      "facades": {
-        "Captcha": "Overtrue\\LaravelQcloudCaptcha\\Captcha"
-      }
+        "Overtrue\\LaravelQcloudCaptcha\\CaptchaServiceProvider"
+      ]
     },
     "hooks": {
       "pre-commit": [

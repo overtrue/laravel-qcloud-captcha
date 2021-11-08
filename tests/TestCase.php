@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Overtrue\LaravelQcloudCaptcha\QcloudCaptchaServiceProvider;
+use Overtrue\LaravelQcloudCaptcha\CaptchaServiceProvider;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -15,7 +15,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getPackageProviders($app): array
     {
-        return [QcloudCaptchaServiceProvider::class];
+        return [CaptchaServiceProvider::class];
     }
 
     /**

@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use Overtrue\LaravelQcloudCaptcha\Exceptions\InvalidConfigException;
 
-class QcloudCaptchaServiceProvider extends ServiceProvider implements DeferrableProvider
+class CaptchaServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     public function register()
     {

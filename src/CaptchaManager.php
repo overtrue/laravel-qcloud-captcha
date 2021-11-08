@@ -157,4 +157,3 @@ class CaptchaManager
         return $this->config[$app ?? $this->defaultApp] ?? [];
     }
 }
-
