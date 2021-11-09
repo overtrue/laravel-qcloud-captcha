@@ -59,7 +59,7 @@ class CaptchaManager
     {
         $app = $app ?? $this->defaultApp;
 
-        if (!$this->clients[$app]) {
+        if (!isset($this->clients[$app])) {
             $config = $this->getAppConfig($app);
 
             if (empty($config['secret_id']) || empty($config['secret_key'])) {
@@ -97,7 +97,7 @@ class CaptchaManager
                     "Ticket" => $ticket,
                     "UserIp" => \request()->getClientIp(),
                     "Randstr" => $nonce,
-                    "CaptchaAppId" => $config['app_id'] ?? null,
+                    "CaptchaAppId" => (int)$config['app_id'] ?? null,
                     "AppSecretKey" => $config['app_secret_key'] ?? null,
                 ]
             )
@@ -154,6 +154,6 @@ class CaptchaManager
 
     protected function getAppConfig(?string $app = null): array
     {
-        return $this->config[$app ?? $this->defaultApp] ?? [];
+        return $this->config['apps'][$app ?? $this->defaultApp] ??  [];
     }
 }

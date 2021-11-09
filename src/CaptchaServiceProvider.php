@@ -42,7 +42,7 @@ class CaptchaServiceProvider extends ServiceProvider implements DeferrableProvid
 
     public function provides(): array
     {
-        return ['captcha'];
+        return [CaptchaManager::class, 'captcha'];
     }
 
     /**
