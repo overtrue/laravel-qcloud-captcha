@@ -154,6 +154,6 @@ class CaptchaManager
 
     protected function getAppConfig(?string $app = null): array
     {
-        return $this->config['apps'][$app ?? $this->defaultApp] ??  [];
+        return $this->config['apps'][$app ?? $this->defaultApp] ?? [];
     }
 }

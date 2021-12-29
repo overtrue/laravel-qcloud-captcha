@@ -38,10 +38,11 @@
     },
     "hooks": {
       "pre-commit": [
-        "composer check-style",
+        "composer fix-style",
         "composer test"
       ],
       "pre-push": [
+        "composer check-style",
         "composer test"
       ]
     }
