@@ -8,5 +8,8 @@ class CaptchaTest extends TestCase
 {
     use InteractsWithContainer;
 
-    //todo
+    public function test_demo()
+    {
+        $this->assertTrue(true);
+    }
 }
