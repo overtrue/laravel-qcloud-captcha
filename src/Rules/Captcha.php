@@ -7,6 +7,7 @@ use Illuminate\Contracts\Validation\Rule;
 class Captcha implements Rule
 {
     protected ?string $app = null;
+
     protected ?string $nonce = null;
 
     public function __construct(?string $app = null, ?string $nonce = null)

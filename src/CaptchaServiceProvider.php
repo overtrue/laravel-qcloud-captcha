@@ -14,6 +14,7 @@ class CaptchaServiceProvider extends ServiceProvider implements DeferrableProvid
             CaptchaManager::class,
             function () {
                 $config = $this->normailzeConfig(\config('services.captcha', []));
+
                 return new \Overtrue\LaravelQcloudCaptcha\CaptchaManager($config);
             }
         );
@@ -30,7 +31,7 @@ class CaptchaServiceProvider extends ServiceProvider implements DeferrableProvid
                 $nonce = $parameters[1] ?? null;
 
                 // captcha:nonce
-                if (!$nonce && \request()->has($app) && !Captcha::has($app)) {
+                if (! $nonce && \request()->has($app) && ! Captcha::has($app)) {
                     $nonce = \request()->get($app);
                     $app = null;
                 }

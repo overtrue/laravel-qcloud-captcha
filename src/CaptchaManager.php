@@ -16,7 +16,9 @@ use TencentCloud\Common\Profile\HttpProfile;
 class CaptchaManager
 {
     protected array $config = [];
+
     protected array $clients = [];
+
     protected ?string $defaultApp = null;
 
     public const VALIDATED_OK = 1;
@@ -37,10 +39,11 @@ class CaptchaManager
         $app = $app ?? $this->defaultApp;
         $config = $this->getAppConfig($app);
 
-        if (!$nonce || $config['channel'] === self::CHANNEL_WEB) {
+        if (! $nonce || $config['channel'] === self::CHANNEL_WEB) {
             if (empty($nonce)) {
                 throw new InvalidArgumentException('Invalid $nonce for web captcha validation.');
             }
+
             return $this->validateWebTicket($ticket, $nonce, $app);
         }
 
@@ -59,7 +62,7 @@ class CaptchaManager
     {
         $app = $app ?? $this->defaultApp;
 
-        if (!isset($this->clients[$app])) {
+        if (! isset($this->clients[$app])) {
             $config = $this->getAppConfig($app);
 
             if (empty($config['secret_id']) || empty($config['secret_key'])) {
@@ -73,7 +76,7 @@ class CaptchaManager
             $clientProfile = new ClientProfile();
             $clientProfile->setHttpProfile($httpProfile);
 
-            $this->clients[$app] = new CaptchaClient($credential, "", $clientProfile);
+            $this->clients[$app] = new CaptchaClient($credential, '', $clientProfile);
         }
 
         return $this->clients[$app];
@@ -93,12 +96,12 @@ class CaptchaManager
         $request->fromJsonString(
             \json_encode(
                 [
-                    "CaptchaType" => 9,
-                    "Ticket" => $ticket,
-                    "UserIp" => \request()->getClientIp(),
-                    "Randstr" => $nonce,
-                    "CaptchaAppId" => (int)$config['app_id'] ?? null,
-                    "AppSecretKey" => $config['app_secret_key'] ?? null,
+                    'CaptchaType' => 9,
+                    'Ticket' => $ticket,
+                    'UserIp' => \request()->getClientIp(),
+                    'Randstr' => $nonce,
+                    'CaptchaAppId' => (int) $config['app_id'] ?? null,
+                    'AppSecretKey' => $config['app_secret_key'] ?? null,
                 ]
             )
         );
@@ -130,11 +133,11 @@ class CaptchaManager
         $request->fromJsonString(
             \json_encode(
                 [
-                    "CaptchaType" => 9,
-                    "Ticket" => $ticket,
-                    "UserIp" => \request()->getClientIp(),
-                    "CaptchaAppId" => $config['app_id'] ?? null,
-                    "AppSecretKey" => $config['app_secret_key'] ?? null,
+                    'CaptchaType' => 9,
+                    'Ticket' => $ticket,
+                    'UserIp' => \request()->getClientIp(),
+                    'CaptchaAppId' => $config['app_id'] ?? null,
+                    'AppSecretKey' => $config['app_secret_key'] ?? null,
                 ]
             )
         );

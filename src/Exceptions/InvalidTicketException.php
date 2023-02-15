@@ -7,6 +7,7 @@ use Throwable;
 class InvalidTicketException extends Exception
 {
     public string $contents;
+
     public array $response;
 
     public function __construct(string $ticket, array $response, Throwable $previous = null)
