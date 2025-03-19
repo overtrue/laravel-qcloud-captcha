@@ -9,7 +9,7 @@
     }
   ],
   "require": {
-    "laravel/framework": "^9.0|^10.0|^11.0",
+    "laravel/framework": "^12.1",
     "tencentcloud/tencentcloud-sdk-php": "^3.0",
     "ext-json": "*"
   },
