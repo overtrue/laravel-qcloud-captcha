@@ -32,7 +32,7 @@ class CaptchaManager
     }
 
     /**
-     * @throws \Overtrue\LaravelQcloudCaptcha\Exceptions\Exception
+     * @throws Exception
      */
     public function validate(string $ticket, ?string $app = null, ?string $nonce = null): array
     {
@@ -56,7 +56,7 @@ class CaptchaManager
     }
 
     /**
-     * @throws \Overtrue\LaravelQcloudCaptcha\Exceptions\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public function getClient(?string $app = null)
     {
@@ -70,10 +70,10 @@ class CaptchaManager
             }
 
             $credential = new Credential($config['secret_id'], $config['secret_key']);
-            $httpProfile = new HttpProfile();
+            $httpProfile = new HttpProfile;
             $httpProfile->setEndpoint($config['endpoint'] ?? 'captcha.tencentcloudapi.com');
 
-            $clientProfile = new ClientProfile();
+            $clientProfile = new ClientProfile;
             $clientProfile->setHttpProfile($httpProfile);
 
             $this->clients[$app] = new CaptchaClient($credential, '', $clientProfile);
@@ -83,16 +83,16 @@ class CaptchaManager
     }
 
     /**
-     * @throws \Overtrue\LaravelQcloudCaptcha\Exceptions\Exception
-     * @throws \Overtrue\LaravelQcloudCaptcha\Exceptions\InvalidConfigException
-     * @throws \Overtrue\LaravelQcloudCaptcha\Exceptions\InvalidTicketException
+     * @throws Exception
+     * @throws InvalidConfigException
+     * @throws InvalidTicketException
      */
     public function validateWebTicket(string $ticket, string $nonce, ?string $app = null): array
     {
         $app = $app ?? $this->defaultApp;
         $config = $this->getAppConfig($app);
 
-        $request = new DescribeCaptchaResultRequest();
+        $request = new DescribeCaptchaResultRequest;
         $request->fromJsonString(
             \json_encode(
                 [
@@ -120,16 +120,16 @@ class CaptchaManager
     }
 
     /**
-     * @throws \Overtrue\LaravelQcloudCaptcha\Exceptions\Exception
-     * @throws \Overtrue\LaravelQcloudCaptcha\Exceptions\InvalidConfigException
-     * @throws \Overtrue\LaravelQcloudCaptcha\Exceptions\InvalidTicketException
+     * @throws Exception
+     * @throws InvalidConfigException
+     * @throws InvalidTicketException
      */
     public function validateMiniAppTicket(string $ticket, ?string $app = null): array
     {
         $app = $app ?? $this->defaultApp;
         $config = $this->getAppConfig($app);
 
-        $request = new DescribeCaptchaMiniRiskResultRequest();
+        $request = new DescribeCaptchaMiniRiskResultRequest;
         $request->fromJsonString(
             \json_encode(
                 [

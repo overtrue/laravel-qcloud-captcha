@@ -9,7 +9,8 @@
     }
   ],
   "require": {
-    "laravel/framework": "^12.1",
+    "php": "^8.3",
+    "laravel/framework": "^13.9",
     "tencentcloud/tencentcloud-sdk-php": "^3.0",
     "ext-json": "*"
   },
@@ -24,9 +25,9 @@
     }
   },
   "require-dev": {
-    "mockery/mockery": "^1.4",
-    "phpunit/phpunit": "^10.0",
-    "orchestra/testbench": "^8.0",
+    "mockery/mockery": "^1.6.10",
+    "phpunit/phpunit": "^12.5.8",
+    "orchestra/testbench": "^11.0",
     "laravel/pint": "*",
     "brainmaestro/composer-git-hooks": "dev-master"
   },

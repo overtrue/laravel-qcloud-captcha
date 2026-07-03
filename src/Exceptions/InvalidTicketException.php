@@ -10,7 +10,7 @@ class InvalidTicketException extends Exception
 
     public array $response;
 
-    public function __construct(string $ticket, array $response, Throwable $previous = null)
+    public function __construct(string $ticket, array $response, ?Throwable $previous = null)
     {
         $this->contents = $ticket;
         $this->response = $response;

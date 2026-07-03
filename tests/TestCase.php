@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Illuminate\Foundation\Application;
 use Overtrue\LaravelQcloudCaptcha\CaptchaServiceProvider;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
@@ -9,7 +10,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     /**
      * Load package service provider.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  Application  $app
      */
     protected function getPackageProviders($app): array
     {
@@ -19,7 +20,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  Application  $app
      */
     protected function getEnvironmentSetUp($app)
     {

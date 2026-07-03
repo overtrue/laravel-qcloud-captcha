@@ -15,7 +15,7 @@ class CaptchaServiceProvider extends ServiceProvider implements DeferrableProvid
             function () {
                 $config = $this->normailzeConfig(\config('services.captcha', []));
 
-                return new \Overtrue\LaravelQcloudCaptcha\CaptchaManager($config);
+                return new CaptchaManager($config);
             }
         );
 
@@ -36,7 +36,7 @@ class CaptchaServiceProvider extends ServiceProvider implements DeferrableProvid
                     $app = null;
                 }
 
-                return (new \Overtrue\LaravelQcloudCaptcha\Rules\Captcha($app, $nonce))->passes($attribute, $value);
+                return (new Rules\Captcha($app, $nonce))->passes($attribute, $value);
             }
         );
     }
@@ -47,7 +47,7 @@ class CaptchaServiceProvider extends ServiceProvider implements DeferrableProvid
     }
 
     /**
-     * @throws \Overtrue\LaravelQcloudCaptcha\Exceptions\InvalidConfigException
+     * @throws InvalidConfigException
      */
     protected function normailzeConfig(array $config): array
     {

@@ -28,7 +28,7 @@ class CaptchaTest extends TestCase
 
     public function test_it_can_validate_mini_app_tickets()
     {
-        $rule = new CaptchaRule();
+        $rule = new CaptchaRule;
 
         Captcha::swap(\Mockery::mock());
 
